@@ -14,12 +14,24 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Post = props => {
-  const {post} = props; // to take post out of props
+  // const {post} = props; // to take post out of props
+  const [post, setPost] = useState(props.post);
+  const [isLiked, setIsLiked] = useState(false); // to make 1 like at a time
 
   const [paused, setPaused] = useState(false);
 
   const onPlayPausePress = () => {
     setPaused(!paused);
+  };
+
+  // the below method explains about 1 like at a time.
+  const onLikePress = () => {
+    const likesToAdd = isLiked ? -1 : 1;
+    setPost({
+      ...post,
+      likes: post.likes + likesToAdd,
+    });
+    setIsLiked(!isLiked); // true to false and false to true
   };
 
   return (
@@ -48,8 +60,12 @@ const Post = props => {
           </TouchableOpacity>
 
           <View style={styles.iconContainer}>
-            <TouchableOpacity>
-              <AntDesign name={'heart'} size={35} color="white" />
+            <TouchableOpacity onPress={onLikePress}>
+              <AntDesign
+                name={'heart'}
+                size={35}
+                color={isLiked ? 'red' : 'white'}
+              />
               <Text style={styles.statsLabel}>{post.likes}</Text>
             </TouchableOpacity>
           </View>
