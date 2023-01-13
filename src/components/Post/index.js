@@ -20,6 +20,7 @@ const Post = props => {
 
   const [paused, setPaused] = useState(false);
 
+  // for video to pause and play
   const onPlayPausePress = () => {
     setPaused(!paused);
   };
@@ -42,7 +43,7 @@ const Post = props => {
             uri: post.videoUri,
           }}
           style={styles.video}
-          onError={e => console.log(e)}
+          // onError={e => console.log(e)}
           resizeMode={'cover'}
           repeat={true}
           paused={paused}

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '100%',
-    height: Dimensions.get('window').height + 20,
+    height: Dimensions.get('window').height - 20,
   },
   uiContainer: {
     height: '100%',

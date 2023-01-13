@@ -26,13 +26,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import Home from './src/screens/Home';
+import 'react-native-gesture-handler';
+import RootNavigation from './src/navigation';
 
 const App: () => Node = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Home />
+      <StatusBar barStyle="auto" />
+      <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
+        <RootNavigation />
       </SafeAreaView>
     </>
   );
